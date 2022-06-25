@@ -52,10 +52,9 @@ h1 {
   height: 15rem;
   width: 15rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  background-color: rgb(255, 245, 110);
-  border: .2rem solid rgb(255, 245, 110);
-  border-radius: .5rem;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+  align-content: center;
   justify-items: center;
   align-items: center;
 }
@@ -70,6 +69,27 @@ h1 {
   font-weight: bold;
   background-color: black;
   cursor: pointer;
+  border: 1px solid rgb(255, 245, 110);;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+.cell:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.cell:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.cell:last-child,
+.cell:nth-child(7),
+.cell:nth-child(8) {
+  border-bottom: none;
 }
 
 .result {
