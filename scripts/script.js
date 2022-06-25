@@ -1,13 +1,13 @@
 let page = document.querySelector('.page');
 let turn = document.querySelector('.turn');
-let boardPositions = document.querySelectorAll('.board div');
+let boardPositions = Array.from(document.querySelectorAll('.board div'));
 
 // game status
 let gameEnd = false;
 let currentPlayer = 'X';
 let winner = '';
 let board = new Array(9).fill('');
-
+ 
 // handle board click
 function handleBoardClick(event) {
   let { id, classList } = event.target;
@@ -96,10 +96,10 @@ function checkWon() {
     showButton();
     endGame();
   } else {
-    let boardIsNotFull = board.some(position => position === '');
+    let boardIsNotFull = board.includes('');
 
     if (boardIsNotFull) {
-      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+      currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // change player
       turn.innerText = `${currentPlayer}'s Turn`;
     } else {
       winner = 'DRAW!';
