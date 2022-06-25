@@ -66,7 +66,7 @@ function handleButtonClick() {
 // end the game
 function endGame() {
   gameEnd = true;
-  turn.innerText = '';
+  turn.innerText = 'GAME END';
 };
 
 // check for win
