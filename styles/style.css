@@ -50,7 +50,7 @@ h1 {
   grid-template-columns: repeat(3, 1fr);
   background-color: rgb(255, 251, 189);
   border: .2rem solid rgb(255, 251, 189);
-  border-radius: .25rem;
+  border-radius: .5rem;
   justify-items: center;
   align-items: center;
 }
