@@ -35,7 +35,7 @@ boardPositions.forEach(position => {
 function showResult(winner) {
   let result = document.createElement('p');
   result.innerText = winner === 'DRAW!' ? winner : `${winner} Won!`;
-  result.classList.add('animate__animated', 'animate__flash');
+  result.classList.add('result', 'animate__animated', 'animate__flash', 'animate__infinite');
   page.append(result);
 };
 
@@ -66,7 +66,7 @@ function handleButtonClick() {
 // end the game
 function endGame() {
   gameEnd = true;
-  turn.innerText = 'GAME END';
+  turn.innerText = '';
 };
 
 // check for win
