@@ -1,28 +1,31 @@
 let page = document.querySelector('.page');
+let title = document.querySelector('.title');
 let turn = document.querySelector('.turn');
+let board = document.querySelector('.board');
 let boardPositions = Array.from(document.querySelectorAll('.board div'));
+
 
 // game status
 let gameEnd = false;
 let currentPlayer = 'X';
 let winner = '';
-let board = new Array(9).fill('');
+let boardArr = new Array(9).fill('');
  
 // handle board click
 function handleBoardClick(event) {
   let { id, classList } = event.target;
-  if (!gameEnd && board[id] === '') {
-    board[id] = currentPlayer;
+  if (!gameEnd && boardArr[id] === '') {
+    boardArr[id] = currentPlayer;
     currentPlayer === 'X' ? classList.add('purple') : classList.add('cyan');
     updateBoardPositions();
     checkWon(); // always check for win whenever board updates
   }
 };
 
-// update what the board displays according to the board in game status
+// update what the board displays according to boardArr in game status
 function updateBoardPositions() {
   boardPositions.forEach((position, i) => {
-    position.innerText = board[i];
+    position.innerText = boardArr[i];
   });
 };
 
@@ -50,18 +53,34 @@ function showButton() {
 
 // handle button click to reset the game
 function handleButtonClick() {
+  removeAnimation();
   turn.innerText = 'X\'s Turn';
   gameEnd = false;
   currentPlayer = 'X';
   winner = '';
-  board = new Array(9).fill('');
+  boardArr = new Array(9).fill('');
   page.lastElementChild.remove();
   page.lastElementChild.remove();
   updateBoardPositions();
   boardPositions.forEach(position => {
     position.classList.remove('purple', 'cyan');
   });
+  addAnimation();
 };
+
+// remove animation by overriding CSS with style attribute
+function removeAnimation() {
+  title.style.animation = 'none';
+  turn.style.animation = 'none';
+  board.style.animation = 'none';
+}
+
+// add animation by removing CSS override
+function addAnimation() {
+  title.style.animation = null;
+  turn.style.animation = null;
+  board.style.animation = null;
+}
 
 // end the game
 function endGame() {
@@ -83,9 +102,9 @@ function checkWon() {
   ];
 
   let winnerFound = winningConditions.some(condition => {
-    let a = board[condition[0]];
-    let b = board[condition[1]];
-    let c = board[condition[2]];
+    let a = boardArr[condition[0]];
+    let b = boardArr[condition[1]];
+    let c = boardArr[condition[2]];
     
     return a !== '' && a === b && b === c;
   });
@@ -96,7 +115,7 @@ function checkWon() {
     showButton();
     endGame();
   } else {
-    let boardIsNotFull = board.includes('');
+    let boardIsNotFull = boardArr.includes('');
 
     if (boardIsNotFull) {
       currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // change player
