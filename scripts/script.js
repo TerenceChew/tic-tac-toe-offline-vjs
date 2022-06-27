@@ -20,19 +20,19 @@ function handleBoardClick(event) {
     updateBoardPositions();
     checkWon(); // always check for win whenever board updates
   }
-};
+}
 
 // update what the board displays according to boardArr in game status
 function updateBoardPositions() {
   boardPositions.forEach((position, i) => {
     position.innerText = boardArr[i];
   });
-};
+}
 
 // add event listener to each board position
 boardPositions.forEach(position => {
   position.addEventListener('click', handleBoardClick)
-});
+})
 
 // show the winner
 function showResult(winner) {
@@ -40,7 +40,7 @@ function showResult(winner) {
   result.innerText = winner === 'DRAW!' ? winner : `${winner} Won!`;
   result.classList.add('result', 'animate__animated', 'animate__flash', 'animate__infinite');
   page.append(result);
-};
+}
 
 // show the new game button
 function showButton() {
@@ -49,7 +49,7 @@ function showButton() {
   btn.classList.add('btn', 'animate__animated', 'animate__zoomIn');
   btn.addEventListener('click', handleButtonClick); // add event listener to button
   page.append(btn);
-};
+}
 
 // handle button click to reset the game
 function handleButtonClick() {
@@ -66,7 +66,7 @@ function handleButtonClick() {
     position.classList.remove('purple', 'cyan');
   });
   addAnimation();
-};
+}
 
 // remove animation by overriding CSS with style attribute
 function removeAnimation() {
@@ -86,7 +86,7 @@ function addAnimation() {
 function endGame() {
   gameEnd = true;
   turn.innerText = 'GAME END';
-};
+}
 
 // check for win
 function checkWon() {
@@ -127,6 +127,6 @@ function checkWon() {
       endGame();
     };
   };
-};
+}
 
 
