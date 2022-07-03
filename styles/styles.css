@@ -114,3 +114,13 @@ h1 {
   font-size: 1.25rem;
   font-family: 'Press Start 2P', cursive;
 }
+
+.btn:active {
+  min-width: 14rem;
+  transform: scale(0.95);
+  border-radius: 0px;
+  border-top: 3px solid rgb(123, 255, 255);
+  border-right: none;
+  border-bottom: 3px solid rgb(252, 174, 255);
+  border-left: none;
+}
