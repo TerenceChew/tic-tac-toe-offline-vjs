@@ -115,9 +115,9 @@ h1 {
   font-family: 'Press Start 2P', cursive;
 }
 
-.btn:active {
+.btn:hover {
   min-width: 14rem;
-  transform: scale(0.95);
+  transform: scale(0.9);
   border-radius: 0px;
   border-top: 3px solid rgb(123, 255, 255);
   border-right: none;
